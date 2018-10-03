@@ -11,7 +11,6 @@ parser.add_argument('csv_file', type=str)
 
 # Read csv with Pandas and assign as ColumnDataSource type
 df = pd.read_csv(parser.parse_args().csv_file)
-source = ColumnDataSource(df)
 
 # Establish column name and label variables
 title = df.at[0, 'Config']
@@ -25,7 +24,12 @@ lcl = df.at[7, 'Config']
 x_label = df.at[8, 'Config']
 y_label = df.at[9, 'Config']
 
+if not pd.isnull(ucl):
+    df[ucl] = df[ucl].apply(lambda x: df.at[0, ucl])
+if not pd.isnull(lcl):
+    df[lcl] = df[lcl].apply(lambda x: df.at[0, lcl])
 
+source = ColumnDataSource(df)
 output_file(df.at[0, 'Config'] + ".html")
 
 # Plot figure
