@@ -14,7 +14,7 @@ Use the sample_control_chart.csv template to generate a correctly formatted csv.
 
 |           | Config    | Diameter  | UCL
 | --------- | --------- | --------- | ------
-|Chart      | Title	    | 2.0       | 10
+|Chart title| Title	    | 2.0       | 10
 |X-axis     |           | 2.2       | 10
 |Y-axis 1   | Diamater  | 2.1       | 10
 |Y-axis 2   |           | 2.05      | 10	
