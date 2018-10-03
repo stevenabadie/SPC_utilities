@@ -4,11 +4,14 @@ from bokeh.models import ColumnDataSource, LabelSet, HoverTool, WheelZoomTool
 from bokeh.models.widgets import DataTable, TableColumn
 
 import pandas as pd
+import argparse
 
-output_file("control_chart.html")
+parser = argparse.ArgumentParser()
+parser.add_argument('csv_file', type=str)
+#args = parser.parse_args()
 
 # Read csv with Pandas and assign as ColumnDataSource type
-df = pd.read_csv('../SPC_data/TP-RD00028_Testing-Data_002.csv')
+df = pd.read_csv(parser.parse_args().csv_file)
 source = ColumnDataSource(df)
 
 # Establish column name and label variables
@@ -24,6 +27,8 @@ x_label = df.at[8, 'Config']
 y_label = df.at[9, 'Config']
 
 
+output_file(df.at[0, 'Config'] + ".html")
+
 # Plot figure
 p = figure(
     title=title,
@@ -33,7 +38,6 @@ p = figure(
 )
 
 tooltips= []
-
 columns = []
 
 if not pd.isnull(y_axis_one):
