@@ -8,7 +8,6 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('csv_file', type=str)
-#args = parser.parse_args()
 
 # Read csv with Pandas and assign as ColumnDataSource type
 df = pd.read_csv(parser.parse_args().csv_file)
