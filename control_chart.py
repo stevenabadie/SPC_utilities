@@ -1,3 +1,5 @@
+import sys
+
 from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column
 from bokeh.models import ColumnDataSource, LabelSet, HoverTool, WheelZoomTool
@@ -82,3 +84,5 @@ data_table = DataTable(source=source, columns=columns, width=800, height=400)
 
 # Render the plot, save it, open the rendered file
 show(column(p, data_table))
+
+sys.exit()
