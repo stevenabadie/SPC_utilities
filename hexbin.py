@@ -27,19 +27,23 @@ source = ColumnDataSource(df)
 output_file(df.at[0, 'Config'] + ".html")
 
 #Plotting the hex graph
-#n = 50000
-#x = np.random.standard_normal(n)
-#y = np.random.standard_normal(n)
 
-bins = hexbin(x_axis, y_axis_one, 0.01)
+x=df[x_axis].values
+y=df[y_axis_one].values
 
-p = figure(title="Manual hex bin for 50000 points", tools="wheel_zoom,pan,reset",
-           match_aspect=True, background_fill_color='#440154')
+p = figure(title=title + " - Histogram", match_aspect=True,
+           tools="wheel_zoom,reset", background_fill_color='#440154')
 p.grid.visible = False
 
-p.hex_tile(q="q", r="r", size=0.1, line_color=None, source=bins,
-           fill_color=linear_cmap('counts', 'Viridis256', 0, max(bins.counts)))
+r, bins = p.hexbin(x, y, size=0.01, hover_color="pink", hover_alpha=0.8)
 
-output_file("hex_tile.html")
+p.circle(x, y, color="white", size=1)
+
+p.add_tools(HoverTool(
+    tooltips=[("count", "@c"), ("(q,r)", "(@q, @r)")],
+    mode="mouse", point_policy="follow_mouse", renderers=[r]
+))
+
+output_file(df.at[0, 'Config'] + ".html")
 
 show(p)
