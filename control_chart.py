@@ -54,17 +54,17 @@ if not pd.isnull(y_axis_one):
     tooltips.append((y_axis_one, "@{" + y_axis_one + "}"))
 
 if not pd.isnull(y_axis_two):
-    p_control.line(x=x_axis, y=y_axis_two, source=source, line_width=3, legend=y_axis_two + ' ')
+    p_control.line(x=x_axis, y=y_axis_two, source=source, line_width=3, color="green", legend=y_axis_two + ' ')
     columns.append(TableColumn(field=y_axis_two, title=y_axis_two))
     tooltips.append((y_axis_two, "@{" + y_axis_two + "}"))
 
 if not pd.isnull(y_axis_three):
-    p_control.line(x=x_axis, y=y_axis_three, source=source, line_width=3, legend=y_axis_three + ' ')
+    p_control.line(x=x_axis, y=y_axis_three, source=source, line_width=3, color="lightseagreen", legend=y_axis_three + ' ')
     columns.append(TableColumn(field=y_axis_three, title=y_axis_three))
     tooltips.append((y_axis_three, "@{" + y_axis_three + "}"))
 
 if not pd.isnull(y_axis_four):
-    p_control.line(x=x_axis, y=y_axis_four, source=source, line_width=3, legend=y_axis_four + ' ')
+    p_control.line(x=x_axis, y=y_axis_four, source=source, line_width=3, color="lightskyblue", legend=y_axis_four + ' ')
     columns.append(TableColumn(field=y_axis_four, title=y_axis_four))
     tooltips.append((y_axis_four, "@{" + y_axis_four + "}"))
 
